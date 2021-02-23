@@ -1,13 +1,5 @@
 const STORAGE_KEY = 'node-github-redis'
 
-const trimMillisec = (duration) => {
-  if (!duration) {
-    return 0
-  } else {
-    return +duration.slice(0, duration.length - 2)
-  }
-}
-
 const getStorage = () => {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}
@@ -35,22 +27,19 @@ export function storeLastNonCached (username, duration) {
 
 export function getLastNonCached (username) {
   const storage = getStorage()
-  
+
   return storage[username]
 }
 
 export function calcTimes (username, duration) {
   const prevDuration = getLastNonCached(username)
-  
+
   if (!prevDuration) {
     return ''
   }
 
   try {
-    const prevDurationValue = trimMillisec(prevDuration)
-    const durationValue = trimMillisec(duration)
-
-    return Math.ceil(prevDurationValue / durationValue)
+    return Math.ceil(prevDuration / duration)
   } catch (err) {
     return ''
   }

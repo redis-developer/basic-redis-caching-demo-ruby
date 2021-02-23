@@ -1,24 +1,30 @@
+require 'benchmark'
 require 'net/https'
+require 'redis'
 
 class Api::V1::UsersController < ApplicationController
   def show
-    get_repositories
-  end
+    redis = Redis.new(host: ENV['HOST'])
+    @username = params[:username]
+    cached_repositories = redis.get(@username)
 
-  def get_repositories
-    username = params[:username]
+    elapsed_time = Benchmark.measure do
+      if cached_repositories.present?
+        @repositories = cached_repositories.to_i
+        @cached = true
+      else
+        url = "https://api.github.com/users/#{@username}"
+        response = Net::HTTP.get_response(URI.parse(url))
+        data = JSON.parse(response.body)
+        @repositories = data['public_repos']
+        @cached = false
+      end
+    end
 
-    start_time = Time.now
+    if @repositories.is_a?(Numeric)
+      redis.setex(@username, 3600, @repositories)
 
-    url = "https://api.github.com/users/#{username}"
-    response = Net::HTTP.get_response(URI.parse(url))
-    data = JSON.parse(response.body)
-    repositories = data['public_repos']
-
-    elapsed_time = Time.now - start_time
-
-    if repositories.is_a?(Numeric)
-      render json: { username: username, repositories: repositories, cached: false, time: elapsed_time }
+      render json: { username: @username, repositories: @repositories, cached: @cached, time: elapsed_time.real }
     else
       render json: { status: 'error', code: 404 }
     end

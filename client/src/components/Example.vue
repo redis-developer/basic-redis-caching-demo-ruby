@@ -79,8 +79,6 @@ export default {
         const data = apiResp.data
         const responseTime = +(Math.round(data.time * 1000 + 'e+3') + 'e-3');
 
-        console.log(data);
-
         if (!data.cached) {
           storeLastNonCached(data.username, responseTime)
         }
