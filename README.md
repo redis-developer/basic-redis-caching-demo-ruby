@@ -11,6 +11,8 @@ bundle install
 rails db:create
 ```
 
+#### Copy `config/database.yml.example` to create `config/database.yml`
+
 #### Copy `config/application.yml.example` to create `config/application.yml`. And provide the values for environment variables
 
     - REDIS_ENDPOINT_URI: Redis server URI
