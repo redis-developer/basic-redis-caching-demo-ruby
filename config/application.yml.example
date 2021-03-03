@@ -1,8 +1,0 @@
-# local - redis://localhost:6379
-REDIS_ENDPOINT_URI:
-REDIS_PASSWORD:
-
-# local - http://localhost:8080
-FRONTEND_ENDPOINT:
-# local - localhost
-HOST:
