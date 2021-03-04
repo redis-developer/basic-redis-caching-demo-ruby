@@ -9,7 +9,7 @@ This app returns the number of repositories a Github account has. When you first
 ### Prerequisites
 
 - Ruby - v2.7.0
-- Rails - v5.2.4
+- Rails - v5.2.4.5
 - PostgreSQL - v10.16
 - NPM - v7.6.0
  
