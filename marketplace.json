@@ -12,8 +12,8 @@
   "redis_commands": ["GET", "SETEX"],
   "redis_features": ["caching"],
   "redis_modules": [],
-  "app_image_urls": [l
-    "https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs/blob/master/server/public/example.png"
+  "app_image_urls": [
+    "https://github.com/redis-developer/basic-redis-caching-demo-ruby/blob/master/server/public/example.png"
   ],
   "youtube_url": "",
   "special_tags": [],
