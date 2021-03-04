@@ -5,14 +5,14 @@ This app returns the number of repositories a Github account has. When you first
 ![How it works](server/public/example.png)
 
 ## How to run it locally?
-
+ 
 ### Prerequisites
 
 - Ruby - v2.7.0
 - Rails - v5.2.4
 - PostgreSQL - v10.16
 - NPM - v7.6.0
-
+ 
 ### Local installation:
 
 #### Go to `/server` folder and then run commands:
@@ -22,7 +22,6 @@ This app returns the number of repositories a Github account has. When you first
 cp config/application.yml.example config/application.yml
 
 - REDIS_ENDPOINT_URI: Redis server URI
-- REDIS_PASSWORD: Password to the server
 - FRONTEND_ENDPOINT: Connection with frontend
 - HOST: Your host
 
@@ -54,4 +53,29 @@ npm run serve
 ```sh
 cd server
 rails s 
+```
+
+#### Go to the browser with this link (localhost example)
+
+```sh
+http://localhost:8080
+```
+
+## Example of use:
+
+#### Go to `/server` folder and then run command for rails console opening:
+
+```sh
+rails c
+```
+
+#### Inside rails console run:
+
+```sh
+# make sure, you have HOST variable inside application.yml
+redis = Redis.new(host: ENV['HOST'])
+# set data 
+redis.setex('microsoft', 3600, 1000)
+# get data 
+redis.get('microsoft')
 ```

@@ -1,0 +1,22 @@
+{
+  "app_name": "Basic Redis Caching Demo Ruby",
+  "description": "Caching data with Redis on Ruby in Rails",
+  "type": "Building Block",
+  "contributed_by": "Redis Labs",
+  "repo_url": "https://github.com/redis-developer/basic-redis-caching-demo-ruby",
+  "download_url": "https://github.com/redis-developer/basic-redis-caching-demo-ruby/archive/master.zip",
+  "hosted_url": "",
+  "quick_deploy": "false",
+  "deploy_buttons": [],
+  "language": ["Ruby"],
+  "redis_commands": ["GET", "SETEX"],
+  "redis_features": ["caching"],
+  "redis_modules": [],
+  "app_image_urls": [l
+    "https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs/blob/master/server/public/example.png"
+  ],
+  "youtube_url": "",
+  "special_tags": [],
+  "verticals": ["Software"],
+  "markdown": "https://raw.githubusercontent.com/redislabs-training/redis-sitesearch/master/README.md"
+}

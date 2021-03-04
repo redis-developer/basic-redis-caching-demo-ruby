@@ -1,6 +1,4 @@
-# local example
+# localhost example
 REDIS_ENDPOINT_URI: 'redis://localhost:6379'
-REDIS_PASSWORD:
-
 FRONTEND_ENDPOINT: 'http://localhost:8080'
 HOST: 'localhost'
