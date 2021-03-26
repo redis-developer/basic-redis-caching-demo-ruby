@@ -4,15 +4,25 @@ This app returns the number of repositories a Github account has. When you first
 
 ![How it works](server/public/example.png)
 
+## Try it out
+
+#### Deploy to Heroku
+
+<p>
+  <a href="" target="_blank">
+      <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heorku" />
+  </a>
+</p>
+
 ## How to run it locally?
- 
+
 ### Prerequisites
 
 - Ruby - v2.7.0
 - Rails - v5.2.4.5
 - PostgreSQL - v10.16
 - NPM - v7.6.0
- 
+
 ### Local installation:
 
 #### Go to `/server` folder and then run commands:
@@ -52,7 +62,7 @@ npm run serve
 
 ```sh
 cd server
-rails s 
+rails s
 ```
 
 #### Go to the browser with this link (localhost example)
@@ -74,8 +84,8 @@ rails c
 ```sh
 # make sure, you have HOST variable inside application.yml
 redis = Redis.new(host: ENV['HOST'])
-# set data 
+# set data
 redis.setex('microsoft', 3600, 1000)
-# get data 
+# get data
 redis.get('microsoft')
 ```
