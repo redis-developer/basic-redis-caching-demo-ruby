@@ -1,0 +1,18 @@
+{
+  "name": "Basic Redis Caching Demo Ruby",
+  "description": "Caching data with Redis on Ruby in Rails",
+  "stack": "heroku-18",
+  "repository": "https://github.com/redis-developer/basic-redis-caching-demo-ruby",
+  "logo": "https://redis.io/images/redis-white.png",
+  "keywords": ["ruby", "ruby-on-rails", "redis"],
+  "env": {
+    "REDIS_URL": {
+      "description": "Redis server url",
+      "required": true
+    },
+    "FRONTEND_ENDPOINT": {
+      "description": "Frontend endpoint url",
+      "required": true
+    }
+  }
+}

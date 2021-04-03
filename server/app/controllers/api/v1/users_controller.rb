@@ -4,7 +4,7 @@ require 'redis'
 
 class Api::V1::UsersController < ApplicationController
   def show
-    redis = Redis.new(host: ENV['HOST'])
+    redis = Redis.new(url: ENV['REDIS_URL'])
     @username = params[:username]
     cached_repositories = redis.get(@username)
 
