@@ -2,7 +2,7 @@
 
 This app returns the number of repositories a Github account has. When you first search for an account, the server calls **Github's API** to return the response. This can take **200-500ms** (local testing results). The server caches details of this response then with **Redis** for future requests. When you search again, the next response comes directly from **Redis cache** instead of calling Github. Responses become much faster - **0.01ms - 0.035ms** (local testing results).
 
-![How it works](server/public/example.png)
+![How it works](public/example.png)
 
 ## How it works
 
@@ -38,51 +38,34 @@ You can get remaining time to live of a key (`SECONDS`) with this command:
 
 ### Local installation:
 
-#### Go to `/server` folder and then run commands:
+#### Run commands:
 
 ```sh
 # copy files and set proper data inside
 cp config/application.yml.example config/application.yml
 
 - REDIS_URL: Redis server URI
-- FRONTEND_ENDPOINT: Connection with frontend
 ```
 
 ```sh
 bundle install
 ```
 
-#### Go to root and then `/client` folder and run command:
+#### Run the app
 
 ```sh
-yarn install
-```
-
-#### And then from the root:
-
-##### Run frontend
-
-```sh
-cd client
-npm run serve
-```
-
-#### Run backend
-
-```sh
-cd server
 rails s
 ```
 
 #### Go to the browser with this link (localhost example)
 
 ```sh
-http://localhost:8080
+http://localhost:3000
 ```
 
 ## Deployment
 
-To make deploys work, you need to create free account in https://redislabs.com/try-free/ and get Redis instance information - `REDIS_URL`. You must pass it and `FRONTEND_ENDPOINT` as environmental variables (in `server/config/application.yml` file or by server config, like `Heroku Config Variables`).
+To make deploys work, you need to create free account in https://redislabs.com/try-free/ and get Redis instance information - `REDIS_URL`. You must pass it as environmental variable (in `server/config/application.yml` file or by server config, like `Heroku Config Variables`).
 
 ### Heroku
 
