@@ -10,22 +10,32 @@ This app returns the number of repositories a Github account has. When you first
 
 `GITHUB_ACCOUNT`s with `NUMBER_OF_REPOSITORIES` are stored in Redis store in string format for particular time (`SECONDS`, default: 3600 seconds). You can set/change it with these commands:
 
-```sh
- SETEX GITHUB_ACCOUNT 3600 NUMBER_OF_REPOSITORIES
- INCR GITHUB_ACCOUNT
- DECR GITHUB_ACCOUNT
+- Set the number of repositories for the account (use the user name for key): `SETEX <account name> <seconds till expire> <number of public repos>`
+  - E.g `SETEX microsoft 3600 197`
+
+##### Code example:
+
+```Ruby
+cached_repositories = redis.get(@username)
+
+elapsed_time = Benchmark.measure do
+  if cached_repositories.present?
+    # ...
 ```
 
 ### How the data is accessed:
 
-You can get `GITHUB_ACCOUNT` with this command:
-```sh
- GET GITHUB_ACCOUNT
-```
+- Get number of public repositories for an account: `GET <account name>`
 
-You can get remaining time to live of a key (`SECONDS`) with this command:
-```sh
- TTL GITHUB_ACCOUNT
+  - E.g `GET microsoft`
+
+- You can get remaining time to live of a key (`SECONDS`) with this command:
+  - E.g `TTL microsoft`
+
+##### Code example:
+
+```Ruby
+redis.setex(@username, 3600, @repositories)
 ```
 
 ## How to run it locally?
