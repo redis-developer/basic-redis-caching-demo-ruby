@@ -2,13 +2,13 @@
 
 This app returns the number of repositories a Github account has. When you first search for an account, the server calls **Github's API** to return the response. This can take **200-500ms** (local testing results). The server caches details of this response then with **Redis** for future requests. When you search again, the next response comes directly from **Redis cache** instead of calling Github. Responses become much faster - **0.01ms - 0.035ms** (local testing results).
 
-![How it works](public/example.png)
+![How it works](https://github.com/redis-developer/basic-redis-caching-demo-ruby/raw/master/public/example.png)
 
 # Overview video
 
 Here's a short video that explains the project and how it uses Redis:
 
-[![Watch the video on YouTube](public/YTThumbnail.png)](https://youtube.com/watch?v=Ov18gLo0Da8)
+[![Watch the video on YouTube](https://github.com/redis-developer/basic-redis-caching-demo-ruby/raw/master/public/YTThumbnail.png)](https://youtube.com/watch?v=Ov18gLo0Da8)
 
 ## How it works
 
