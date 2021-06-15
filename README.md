@@ -70,7 +70,7 @@ bundle install
 #### Run the app
 
 ```sh
-rails s
+bin/rails s
 ```
 
 #### Go to the browser with this link (localhost example)
