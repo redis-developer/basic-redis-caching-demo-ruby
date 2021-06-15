@@ -1,6 +1,6 @@
 # Basic Redis caching demo with Ruby
 
-This app returns the number of repositories a Github account has. When you first search for an account, the server calls **Github's API** to return the response. This can take **200-500ms** (local testing results). The server caches details of this response then with **Redis** for future requests. When you search again, the next response comes directly from **Redis cache** instead of calling Github. Responses become much faster - **0.01ms - 0.035ms** (local testing results).
+This app returns the number of repositories owned by a given Github account. When you first search for an account, the server calls **Github's API** to return the response. This can take **200-500ms** (local testing results). The server caches the details of this response, using **Redis** for future requests. When you search again, the next response comes directly from the **Redis cache** instead of calling Github. Responses return much more quickly - **0.01ms - 0.035ms**.
 
 ![How it works](https://github.com/redis-developer/basic-redis-caching-demo-ruby/raw/master/public/example.png)
 
@@ -35,7 +35,7 @@ elapsed_time = Benchmark.measure do
 
   - E.g `GET microsoft`
 
-- You can get remaining time to live of a key (`SECONDS`) with this command:
+- You can get the remaining time to live of a key (`SECONDS`) with this command:
   - E.g `TTL microsoft`
 
 ##### Code example:
@@ -44,7 +44,7 @@ elapsed_time = Benchmark.measure do
 redis.setex(@username, 3600, @repositories)
 ```
 
-## How to run it locally?
+## How do you run this application locally?
 
 ### Prerequisites
 
@@ -54,34 +54,34 @@ redis.setex(@username, 3600, @repositories)
 
 ### Local installation:
 
-#### Run commands:
-
+#### Configure the application:
 ```sh
-# copy files and set proper data inside
+# Rename the example YAML config file
 cp config/application.yml.example config/application.yml
 
-- REDIS_URL: Redis server URI
+# Edit the `application.yml` file to point to your Redis instance:
+
+- REDIS_URL: 'redis://localhost:6379'
 ```
 
+#### From the application's root directory, install the application's dependencies
 ```sh
 bundle install
 ```
 
-#### Run the app
-
+#### Run the application
 ```sh
 bin/rails s
 ```
 
-#### Go to the browser with this link (localhost example)
-
+#### Navigate with your browser to this URL (if running on localhost)
 ```sh
 http://localhost:3000
 ```
 
-## Deployment
+## Deploying with Redis Cloud
 
-To make deploys work, you need to create free account in https://redislabs.com/try-free/ and get Redis instance information - `REDIS_URL`. You must pass it as environmental variable (in `server/config/application.yml` file or by server config, like `Heroku Config Variables`).
+To deploy the application using Redis Cloud, you'll first need to [create free account](https://redislabs.com/try-free/). Then you can get your cloud Redis URI. You can specify this URI in `config/application.yml`.
 
 ### Heroku
 
